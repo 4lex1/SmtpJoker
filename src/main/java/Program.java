@@ -1,6 +1,6 @@
 public class Program {
     public static void main(String ... args){
-        SmtpClient client = new SmtpClient();
+        SmtpClient client = new SmtpClient("127.0.0.1", 25);
 
         Group group = new Group();
         group.setFrom("alexis.monthoux@bluewin.ch");
