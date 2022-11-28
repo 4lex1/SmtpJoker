@@ -6,6 +6,5 @@ public class HeloSmtpCommand  implements SmtpCommand{
 
     @Override
     public void handleResponse(String response) {
-
     }
 }

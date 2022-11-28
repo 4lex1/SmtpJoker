@@ -7,11 +7,10 @@ public class RcptToSmtpCommand  implements SmtpCommand{
 
     @Override
     public String build() {
-        return "RCPT TO: <" + to + ">";
+        return "RCPT TO:" + to + "\r\n";
     }
 
     @Override
     public void handleResponse(String response) {
-
     }
 }

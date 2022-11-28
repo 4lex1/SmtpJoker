@@ -8,11 +8,10 @@ public class EhloSmtpCommand implements SmtpCommand{
 
     @Override
     public String build() {
-        return "EHLO " + identity;
+        return "EHLO " + identity + "\r\n";
     }
 
     @Override
     public void handleResponse(String response) {
-
     }
 }

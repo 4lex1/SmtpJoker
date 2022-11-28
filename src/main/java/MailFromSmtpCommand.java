@@ -8,11 +8,10 @@ public class MailFromSmtpCommand  implements SmtpCommand{
 
     @Override
     public String build() {
-        return "MAIL FROM: <" + from + ">";
+        return "MAIL FROM:" + from + "\r\n";
     }
 
     @Override
     public void handleResponse(String response) {
-
     }
 }

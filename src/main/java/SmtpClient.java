@@ -1,5 +1,7 @@
-import java.io.IOException;
+import javax.print.attribute.standard.PresentationDirection;
+import java.io.*;
 import java.net.Socket;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 
 public class SmtpClient {
@@ -15,19 +17,30 @@ public class SmtpClient {
     public void sendMail(Mail mail, Group group){
         ArrayList<SmtpCommand> commands = new ArrayList<>();
 
-        commands.add(new EhloSmtpCommand(group.getFrom()));
-        commands.add(new MailFromSmtpCommand(group.getFrom()));
-        for (String to : group.getTo()){
+        commands.add(new EhloSmtpCommand(group.from));
+        commands.add(new MailFromSmtpCommand(group.from));
+        for (String to : group.to){
             commands.add(new RcptToSmtpCommand(to));
         }
         commands.add(new DataSmtpCommand());
-        commands.add(new SmtpData(mail.getBody()));
+        commands.add(new SmtpData(mail.subject, mail.body, group.from, group.to));
+
+        Socket client = null;
+        BufferedReader in = null;
+        BufferedWriter out = null;
 
         try{
-            Socket client = new Socket();
-            // Ouvrir la connexion avec le serveur
+            client = new Socket(host, port);
+
+            in = new BufferedReader(new InputStreamReader(client.getInputStream(), StandardCharsets.UTF_8));
+            out = new BufferedWriter(new OutputStreamWriter(client.getOutputStream(), StandardCharsets.UTF_8));
+
+            String line;
+            while ((line = in.readLine()) == null) { }
+            System.out.println("S: " + line);
+
             for (SmtpCommand command : commands){
-                String response = sendCommand(client, command);
+                String response = sendCommand(command, in, out);
                 command.handleResponse(response);
             }
             client.close();
@@ -36,11 +49,17 @@ public class SmtpClient {
         }
     }
 
-    private String sendCommand(Socket client, SmtpCommand command){
+    private String sendCommand(SmtpCommand command, BufferedReader in, BufferedWriter out) throws IOException{
         String message = command.build();
-        // Envoyer message au serveur encodé en UTF-8
-        // Flush
-        // Retourner la réponse du serveur en String
-        return "command response";
+        System.out.print("C: " + message);
+
+        out.write(message);
+        out.flush();
+
+        String line;
+        while ((line = in.readLine()) == null) { }
+        System.out.println("S: " + line);
+
+        return line;
     }
 }

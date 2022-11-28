@@ -1,15 +1,21 @@
+import com.google.gson.Gson;
+
+import java.io.IOException;
+
 public class Program {
-    public static void main(String ... args){
-        SmtpClient client = new SmtpClient("127.0.0.1", 25);
+    public static void main(String... args) throws IOException {
 
-        Group group = new Group();
-        group.setFrom("alexis.monthoux@bluewin.ch");
-        group.setTo("victor.nondjock@evolink.ch", "abraham.rubinstein@heig-vd.ch");
 
-        Mail mail = new Mail();
-        mail.setSubject("Test mail");
-        mail.setBody("Ceci est un mail de test hyper rigolo");
+        try {
+            Group group = new Gson().fromJson(FileUtils.readAllText("C:\\Users\\Alexis\\Desktop\\group.json"), Group.class);
+            Mail mail = new Gson().fromJson(FileUtils.readAllText("C:\\Users\\Alexis\\Desktop\\mail.json"), Mail.class);
 
-        client.sendMail(mail, group);
+            SmtpClient client = new SmtpClient("localhost", 25);
+            client.sendMail(mail, group);
+
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+
     }
 }
