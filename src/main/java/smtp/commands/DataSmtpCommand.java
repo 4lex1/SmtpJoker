@@ -1,3 +1,5 @@
+package smtp.commands;
+
 public class DataSmtpCommand  implements SmtpCommand{
     @Override
     public String build() {
@@ -6,5 +8,8 @@ public class DataSmtpCommand  implements SmtpCommand{
 
     @Override
     public void handleResponse(String response) {
+        if (!response.equals("250 Ok")){
+            throw new RuntimeException("Invalid response from server: " + response);
+        }
     }
 }

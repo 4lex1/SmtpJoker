@@ -1,3 +1,5 @@
+package smtp.commands;
+
 public class EhloSmtpCommand implements SmtpCommand{
 
     private String identity;
@@ -13,5 +15,8 @@ public class EhloSmtpCommand implements SmtpCommand{
 
     @Override
     public void handleResponse(String response) {
+        if (!response.startsWith("250-")){
+            throw new RuntimeException("Invalid response from server: " + response);
+        }
     }
 }

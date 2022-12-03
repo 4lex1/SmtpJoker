@@ -1,3 +1,5 @@
+package smtp.commands;
+
 public class MailFromSmtpCommand  implements SmtpCommand{
 
     private final String from;
@@ -13,5 +15,8 @@ public class MailFromSmtpCommand  implements SmtpCommand{
 
     @Override
     public void handleResponse(String response) {
+        if (!response.startsWith("250-")){
+            throw new RuntimeException("Invalid response from server: " + response);
+        }
     }
 }

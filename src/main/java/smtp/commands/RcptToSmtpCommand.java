@@ -1,3 +1,5 @@
+package smtp.commands;
+
 public class RcptToSmtpCommand  implements SmtpCommand{
     private String to;
 
@@ -12,5 +14,8 @@ public class RcptToSmtpCommand  implements SmtpCommand{
 
     @Override
     public void handleResponse(String response) {
+        if (!response.equals("250 Ok")){
+            throw new RuntimeException("Invalid response from server: " + response);
+        }
     }
 }
