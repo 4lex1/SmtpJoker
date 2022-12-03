@@ -9,6 +9,7 @@ MockMock is a simulated SMTP server which was used to test the transmission of m
 # Setting up your mock SMTP server
 Here is a quick guide that will allow you to run a Mock SMTP server, MockMock in this case, in order to test *SmtpJoker* while avoiding the risks that could result from a joke that would have gone wrong. In order to optimize the performance of the tool, we advise you to run it in a Docker container. To do so, follow the steps described below:
 
+![image](https://user-images.githubusercontent.com/71434403/205465950-ad5b0200-bbf3-4940-a577-1b08fcba158a.png)
 
 
 # Configuring and running a prank campaign with SmtpJoker
