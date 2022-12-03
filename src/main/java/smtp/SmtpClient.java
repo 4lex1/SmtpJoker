@@ -1,3 +1,8 @@
+/*
+    DAI LABO SMTP
+    Authors: Alexis Monthoux, Victor Nondjock
+ */
+
 package smtp;
 
 import fun.Joke;
@@ -8,16 +13,29 @@ import java.net.Socket;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 
+/**
+ * Représente un client SMTP capable d'envoyer un mail.
+ */
 public class SmtpClient {
 
     private final String host;
     private final int port;
 
+    /**
+     * Constructeur
+     * @param host Adresse du serveur SMTP
+     * @param port Port d'écoute du serveur SMTP
+     */
     public SmtpClient(String host, int port){
         this.host = host;
         this.port = port;
     }
 
+    /**
+     * Envoyer un mail de blagues 'joke' en utilisant le groupe 'group'.
+     * @param joke Blague à utiliser pour formuler le mail.
+     * @param group Groupe à utiliser pour déterminer l'émetteur et les récepteurs du mail.
+     */
     public void sendMail(Joke joke, Group group){
         ArrayList<SmtpCommand> commands = new ArrayList<>();
 

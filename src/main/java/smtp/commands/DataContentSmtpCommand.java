@@ -1,5 +1,13 @@
+/*
+    DAI LABO SMTP
+    Authors: Alexis Monthoux, Victor Nondjock
+ */
+
 package smtp.commands;
 
+/**
+ * Permet d'envoyer le contenu qui suit la commande DATA dans un dialogue SMTP.
+ */
 public class DataContentSmtpCommand implements SmtpCommand{
 
     private final String subject;

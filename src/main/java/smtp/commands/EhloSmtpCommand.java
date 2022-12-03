@@ -1,5 +1,13 @@
+/*
+    DAI LABO SMTP
+    Authors: Alexis Monthoux, Victor Nondjock
+ */
+
 package smtp.commands;
 
+/**
+ * Permet d'envoyer la commande EHLO du dialogue SMTP.
+ */
 public class EhloSmtpCommand implements SmtpCommand{
 
     private String identity;

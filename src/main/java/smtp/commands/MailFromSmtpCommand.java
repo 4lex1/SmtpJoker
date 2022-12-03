@@ -1,5 +1,13 @@
+/*
+    DAI LABO SMTP
+    Authors: Alexis Monthoux, Victor Nondjock
+ */
+
 package smtp.commands;
 
+/**
+ * Permet d'envoyer la commande MAIL FROM du dialogue SMTP
+ */
 public class MailFromSmtpCommand  implements SmtpCommand{
 
     private final String from;
