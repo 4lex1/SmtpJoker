@@ -22,6 +22,10 @@
       {
         "subject": "subject 3",
         "body": "body3"
+      },
+      {
+        "subject": "What's funny about Victor ?",
+        "body": "He's black !"   
       }
    ]
 }

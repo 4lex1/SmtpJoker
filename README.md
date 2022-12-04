@@ -7,19 +7,27 @@ the others will be the receivers.
 MockMock is a simulated SMTP server which was used to test the transmission of messages in large quantities while avoiding annoying traffic on a real server. This tool allowed us to implement our solution step by step while verifying its proper functioning while performing a large number of tests. 
 
 # Setting up your mock SMTP server
-Here is a quick guide that will allow you to run a Mock SMTP server, MockMock in this case, in order to test *SmtpJoker* while avoiding the risks that could result from a joke that would have gone wrong. In order to optimize the performance of the tool, we advise you to run it in a Docker container. To do so, follow the steps described below:
+Here is a quick guide that will allow you to run a Mock SMTP server, MockMock in this case, in order to test *SmtpJoker* while avoiding the risks that could result from a joke that would have gone wrong. 
+In order to optimize the performance of the MockMock, we advise you to run it in a Docker container. To do so, follow the steps described below:
 
 **Disclaimer**: in order to run Docker on a Windows system, it is necessary to be allowed to activate hyper-V, which is not the case on all versions. The family version, for example, does not allow it.
 
 **However**, since 2019, it is possible to run Docker Desktop through WSL2 (https://fr.wikipedia.org/wiki/Windows_Subsystem_for_Linux). Starting from this principle, we suggest you to use WSL2 directly. You can follow these instructions to install it on your machine: https://learn.microsoft.com/en-us/windows/wsl/install.
 
-1.	Once WSL2 is installed, you can install Docker Desktop (https://www.docker.com/products/docker-desktop/)
-2.	Optional: build the MockMock project and place the output file (MockMock.jar) in the "docker" folder of our project (SmtpJoker)
-3.	To build the docker image, launch the build-image.sh script via wsl and docker: wsl docker ./build-image.sh, the Dockerfile is already configured.
-4.	To launch the docker container, launch the script run-container.sh via wsl and docker : wsl docker ./run-container.sh
+1. Once WSL2 is installed and Ubuntu running, you can install Docker Desktop (https://www.docker.com/products/docker-desktop/). In settings > Resources > WSL Integration make sure the Ubuntu 
+2. Optional: If needed build the MockMock project and place the output file (MockMock.jar) in the *"docker"* folder of the project (SmtpJoker)
+3. To build the docker image, open a terminal in the SmtpJocker folder and launch the build-image.sh script via wsl and docker: wsl ./build-image.sh, the Dockerfile is already configured.
+4. To launch the docker container, launch the script run-container.sh via wsl : wsl ./run-container.sh
+5. Now you can find the MockMock in the list of containers and it will be in status *running*. ![img_1.png](img_1.png)
+6. Check if everything is alright by opening a page on localhost port 8282, You will see MockMock's welcome page.
+
+You can now test your first campaign.
 
 # Configuring and running a prank campaign with SmtpJoker
+Configuring a campaign is really easy with SmtpJoker.
+In the main folder of the project you will wee a *config.json* file, open it and fill in the *victims* and *jokes* lists. Victims must be at least 3 and you must not end the list with a coma or the app will crash.
 
+Launch the app, and check the result on the MockMock page.
 
 # SmtpJoker's implementation
 SmtpJoker consists of three classes, **Configuration**, **Group** and **Joke**, which essentially serve as data structures:
