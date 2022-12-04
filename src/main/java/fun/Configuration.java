@@ -53,6 +53,7 @@ public class Configuration {
 
         List<String> victimsList = Arrays.asList(victims);
         Collections.shuffle(victimsList);
+        victimsList.toArray(victims);
 
         ArrayList<Group> groups = new ArrayList<>();
         for (int i = 0; i < count; ++i) {
