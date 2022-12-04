@@ -18,7 +18,8 @@ In order to optimize the performance of the MockMock, we advise you to run it in
 2. Optional: If needed build the MockMock project and place the output file (MockMock.jar) in the *"docker"* folder of the project (SmtpJoker)
 3. To build the docker image, open a terminal in the SmtpJocker folder and launch the build-image.sh script via wsl and docker: wsl ./build-image.sh, the Dockerfile is already configured.
 4. To launch the docker container, launch the script run-container.sh via wsl : wsl ./run-container.sh
-5. Now you can find the MockMock in the list of containers and it will be in status *running*. ![img_1.png](img_1.png)
+5. Now you can find the MockMock in the list of containers and it will be in status *running*. 
+![img_1.png](img_1.png)
 6. Check if everything is alright by opening a page on localhost port 8282, You will see MockMock's welcome page.
 
 You can now test your first campaign.
