@@ -20,7 +20,7 @@ In order to optimize the performance of the MockMock, we advise you to run it in
 4. To launch the docker container, launch the script run-container.sh via wsl : wsl ./run-container.sh
 5. Now you can find the MockMock in the list of containers and it will be in status *running*.
 
-![img_1.png](img_1.png)
+![img_1.png](img_1.png)     ![img.png](img.png)
 
 6. Check if everything is alright by opening a page on localhost port 8282, You will see MockMock's welcome page.
 
